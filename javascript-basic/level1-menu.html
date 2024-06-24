@@ -11,6 +11,12 @@
 			crossorigin="anonymous"
 		/>
 		<link rel="stylesheet" href="level1-menu.css" />
+		<!-- jQuery는 라이브러일뿐 -> 함수명만 짧아짐 -->
+		<script
+			src="https://code.jquery.com/jquery-3.7.1.min.js"
+			integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+			crossorigin="anonymous"
+		></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-light bg-light">
@@ -30,7 +36,37 @@
 			<li class="list-group-item">And a fifth one</li>
 		</ul>
 
+		<!-- jQuery 실습 -->
+		<p class="hello">안뇽</p>
+		<p class="hi">하이</p>
+		<p class="hi">하이</p>
+		<p class="hi">하이</p>
+		<button id="test-btn">버튼</button>
+
 		<script>
+			// document.querySelector(".hello").innerHTML = "바보";
+			$(".hello").html("바보");
+			$(".hello").css("color", "red");
+			$(".hello").addClass("show");
+			$(".hello").removeClass("show");
+			$(".hello").toggleClass("show");
+
+			// jQuery는 한 줄로 <p> 3개를 모두 변경이 가능하다
+			$(".hi").html("바보야");
+
+			// jQuery로 addEventListener 적용
+			// document.querySelector("#test-btn").addEventListener();
+			$("#test-btn").on("click", function () {
+				// $(".hello").hide();
+				// $(".hello").fadeOut();
+				$(".hello").slideUp();
+			});
+
+			// 주의!
+			// $('셀렉터')로 찾으면, jQuery함수만 붙일 수 있음
+			// querySelector('셀렉터')로 찾으면, 자바스크립트 함수만 붙일 수 있음
+
+			// querySelector로 수정
 			document.querySelector(".navbar-toggler").addEventListener("click", function () {
 				// document.getElementsByClassName("list-group")[0].classList.add("show"); // show라는 클래스명 추가
 				document.querySelectorAll(".list-group")[0].classList.toggle("show"); // show라는 클래스가 있으면 제거, 없으면 추가
