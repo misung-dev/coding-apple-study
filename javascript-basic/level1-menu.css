@@ -5,3 +5,9 @@
 .show {
 	display: block;
 }
+
+/* 다크 모드 */
+.dark {
+	background: black;
+	color: white;
+}

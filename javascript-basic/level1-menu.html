@@ -18,10 +18,11 @@
 			crossorigin="anonymous"
 		></script>
 	</head>
-	<body>
+	<body class="dark">
 		<nav class="navbar navbar-light bg-light">
 			<div class="container-fluid">
 				<span class="navbar-brand">Navbar</span>
+				<span class="badge bg-dark" id="dark-mode-btn">Dark 🔄</span>
 				<button class="navbar-toggler" type="button">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -44,6 +45,22 @@
 		<button id="test-btn">버튼</button>
 
 		<script>
+			// 다크모드
+			let count = 0;
+
+			document.getElementById("dark-mode-btn").addEventListener("click", function () {
+				count++;
+				const body = document.getElementsByTagName("body")[0];
+				const darkModeBtn = document.getElementById("dark-mode-btn");
+				if (count % 2 === 1) {
+					document.getElementById("dark-mode-btn").innerHTML = "Light 🔄";
+					body.classList.add("dark");
+				} else {
+					document.getElementById("dark-mode-btn").innerHTML = "Dark 🔄";
+					body.classList.remove("dark");
+				}
+			});
+
 			// document.querySelector(".hello").innerHTML = "바보";
 			$(".hello").html("바보");
 			$(".hello").css("color", "red");
