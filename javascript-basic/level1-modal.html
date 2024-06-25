@@ -22,26 +22,57 @@
 		<div class="black-bg">
 			<div class="white-bg">
 				<h4>로그인하세요</h4>
-				<button class="btn btn-danger" id="close">닫기</button>
+				<form action="success.html">
+					<div class="my-3">
+						<input id="id" type="text" class="form-control" />
+					</div>
+					<div class="my-3">
+						<input id="password" type="password" class="form-control" />
+					</div>
+					<button type="submit" class="btn btn-primary send">전송</button>
+					<button type="button" class="btn btn-danger" id="close">닫기</button>
+				</form>
 			</div>
 		</div>
 		<button id="login-btn">로그인</button>
 
 		<script>
-			// document.getElementById('login-btn').addEventListener('click',function(){
-			// document.querySelector('.black-bg').classList.add('show-modal')
-			// })
-
-			// jQuery 버전
 			$("#login-btn").on("click", function () {
 				$(".black-bg").addClass("show-modal");
-				//  UI에 애니메이션 추가하려면, 가능하면 CSS만으로 처리하는 것이 좋음 (성능 이슈)
-				// $(".black-bg").fadeIn();
 			});
-
 			$("#close").on("click", function () {
 				$(".black-bg").removeClass("show-modal");
 			});
+
+			// 아이디와 비밀번호 공백 검사
+			document.querySelector(".send").addEventListener("click", function (e) {
+				if (document.querySelector("#id").value == "") {
+					e.preventDefault(); // 폼 전송을 막음
+					alert("아이디를 입력해주세요");
+				}
+				if (document.querySelector("#password").value == "") {
+					e.preventDefault();
+					alert("비밀번호를 입력해주세요");
+				} else if (document.querySelector("#password").value.length < 6) {
+					e.preventDefault();
+					alert("비밀번호 길이가 6자 미만입니다");
+				}
+			});
+
+			// jQuery 버전
+			// $(".send").on("click", function (e) {
+			// 	if ($("#id").val() == "") {
+			// 		e.preventDefault(); // 폼 전송을 막음
+			// 		alert("아이디를 입력해주세요");
+			// 	}
+			// 	if ($("#password").val() == "") {
+			// 		e.preventDefault();
+			// 		alert("비밀번호를 입력해주세요");
+			// 	} else if ($("#password").val().length < 6) {
+			// 		e.preventDefault();
+			// 		alert("비밀번호 길이가 6자 미만입니다");
+			// 	}
+			// });
 		</script>
 	</body>
 </html>
