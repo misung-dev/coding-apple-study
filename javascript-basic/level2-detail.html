@@ -56,6 +56,11 @@
 			.show {
 				display: block;
 			}
+
+			/* select input 다루기 */
+			.form-hide {
+				display: none;
+			}
 		</style>
 
 		<div class="container mt-3">
@@ -64,6 +69,18 @@
 				<span>가격</span>
 			</div>
 		</div>
+
+		<form class="container my-5 form-group">
+			<p>상품선택</p>
+			<select class="form-select mt-2">
+				<option>모자</option>
+				<option>셔츠</option>
+			</select>
+			<select class="form-select mt-2 form-hide">
+				<option>95</option>
+				<option>100</option>
+			</select>
+		</form>
 
 		<!-- 탭 -->
 		<div class="container mt-5">
@@ -84,8 +101,19 @@
 		</div>
 
 		<script>
+			$(".form-select")
+				.eq(0)
+				// <input>이나 <select> 조작할 때 input 이벤트가 발생
+				.on("input", function () {
+					let value = $(".form-select").eq(0).val();
+					if (value == "셔츠") {
+						$(".form-select").eq(1).removeClass("form-hide");
+					}
+				});
+
 			let car2 = { name: "소나타", price: [5000, 3000, 4000] };
 			document.querySelector(".car-title").innerHTML = car2.price[1];
+
 			// 탭
 			$(".list").click(function (e) {
 				탭열기(e.target.dataset.id);
