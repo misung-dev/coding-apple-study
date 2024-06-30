@@ -66,6 +66,21 @@
 				if (document.querySelector(".price")=== products.id) {
 				}
 			}
+
+			$.get('https://codingapple1.github.io/hello.txt')
+				.done(function(data){
+					console.log(data)
+				})
+				.fail(function(error){
+					console.log('실패함')
+				});
+
+			fetch('https://codingapple1.github.io/price.json').them(res =>res.json()).then(data => {
+				console.log(data)
+			}).catch (error => {
+				console.log(error)
+			})
+
 		</script>
 	</body>
 </html>
