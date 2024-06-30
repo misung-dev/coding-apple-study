@@ -11,3 +11,15 @@
 	background: black;
 	color: white;
 }
+
+/* 레벨2 스크롤 이벤트로 만드는 재밌는 기능들 */
+.navbar {
+	position: fixed;
+	width: 100%;
+	z-index: 5;
+}
+
+.navbar-brand {
+	font-size: 26px;
+	transition: all 1s;
+}

@@ -44,6 +44,13 @@
 		<p class="hi">하이</p>
 		<button id="test-btn">버튼</button>
 
+		<div style="height: 1000px"></div>
+		<div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus
+			praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum
+			perspiciatis, eligendi quae consectetur praesentium exercitationem.
+		</div>
+
 		<script>
 			// 다크모드
 			let count = 0;
@@ -88,6 +95,34 @@
 				// document.getElementsByClassName("list-group")[0].classList.add("show"); // show라는 클래스명 추가
 				document.querySelectorAll(".list-group")[0].classList.toggle("show"); // show라는 클래스가 있으면 제거, 없으면 추가
 			});
+
+			// 레벨2 스크롤 이벤트로 만드는 재밌는 기능들
+			window.addEventListener("scroll", function () {
+				scrollSize = window.scrollY; // 유저가 얼마나 스크롤바를 내렸는지
+				if (scrollSize > 100) {
+					document.querySelector(".navbar-brand").style.fontSize = "16px";
+					// $(".navbar-brand").css("font-size", " 16px");
+				} else {
+					document.querySelector(".navbar-brand").style.fontSize = "26px";
+					// $(".navbar-brand").css("font-size", " 26px");
+				}
+			});
+
+			// div의 스크롤바 내린 양 + 눈에 보이는 div 높이(100px) == div의 실제 높이
+			$(".lorem").on("scroll", function () {
+				let 스크롤양 = document.querySelector(".lorem").scrollTop;
+				let 실제높이 = document.querySelector(".lorem").scrollHeight;
+				let 높이 = document.querySelector(".lorem").clientHeight;
+
+				if (스크롤양 + 높이 > 실제높이 - 10) {
+					alert("다 읽음");
+				}
+			});
+
+			// 현재 페이지 끝까지 스크롤 체크
+			// document.querySelector("html").scrollHeight;
+			// document.querySelector("html").clientHeight;
+			// window.scrollY;
 		</script>
 	</body>
 </html>
