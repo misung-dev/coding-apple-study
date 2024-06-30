@@ -58,6 +58,14 @@
 			}
 		</style>
 
+		<div class="container mt-3">
+			<div class="card p-3">
+				<span class="car-title">상품명</span>
+				<span>가격</span>
+			</div>
+		</div>
+
+		<!-- 탭 -->
 		<div class="container mt-5">
 			<ul class="list">
 				<li class="tab-button" data-id="0">Products</li>
@@ -76,33 +84,11 @@
 		</div>
 
 		<script>
-			// 버튼 0 누르면
-			// - 모든 버튼에 붙은 orange 클래스명 제거
-			// - 버튼0에 orange 클래스명 추가
-			// - 모든 div에 붙은 show 클래스명 제거
-			// - div0에 show 클래스명 추가
-
-			// 함수로 축약하기
-			// for (let i = 0; i < $(".tab-button").length; i++) {
-			// 	$(".tab-button")
-			// 		.eq(i)
-			// 		.on("click", function () {
-			// 			탭열기(i);
-			// 		});
-			// }
-
-			// 탭 다른 방식
+			let car2 = { name: "소나타", price: [5000, 3000, 4000] };
+			document.querySelector(".car-title").innerHTML = car2.price[1];
+			// 탭
 			$(".list").click(function (e) {
 				탭열기(e.target.dataset.id);
-				// if (e.target == document.querySelectorAll(".tab-button")[0]) {
-				// 	탭열기(0);
-				// }
-				// if (e.target == document.querySelectorAll(".tab-button")[1]) {
-				// 	탭열기(1);
-				// }
-				// if (e.target == document.querySelectorAll(".tab-button")[2]) {
-				// 	탭열기(2);
-				// }
 			});
 
 			function 탭열기(숫자) {
