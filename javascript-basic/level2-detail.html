@@ -75,6 +75,7 @@
 			<select class="form-select mt-2">
 				<option>모자</option>
 				<option>셔츠</option>
+				<option>바지</option>
 			</select>
 			<select class="form-select mt-2 form-hide">
 				<option>95</option>
@@ -108,6 +109,11 @@
 					let value = $(".form-select").eq(0).val();
 					if (value == "셔츠") {
 						$(".form-select").eq(1).removeClass("form-hide");
+					} else if (value == "바지") {
+						$(".form-select").eq(1).removeClass("form-hide");
+						let 템플릿 = `<option>28</option>
+						<option>30</option>`;
+						$(".form-select").eq(1).html(템플릿);
 					}
 				});
 
