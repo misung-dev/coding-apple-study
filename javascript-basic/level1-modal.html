@@ -59,20 +59,20 @@
 				}
 			});
 
-			// jQuery 버전
-			// $(".send").on("click", function (e) {
-			// 	if ($("#id").val() == "") {
-			// 		e.preventDefault(); // 폼 전송을 막음
-			// 		alert("아이디를 입력해주세요");
-			// 	}
-			// 	if ($("#password").val() == "") {
-			// 		e.preventDefault();
-			// 		alert("비밀번호를 입력해주세요");
-			// 	} else if ($("#password").val().length < 6) {
-			// 		e.preventDefault();
-			// 		alert("비밀번호 길이가 6자 미만입니다");
-			// 	}
-			// });
+			// 레벨2-모달창 검은 배경 누르면 모달창 닫는 기능
+			document.querySelector(".black-bg").addEventListener("click", function (e) {
+				// e.target은 실제 클릭한 요소 알려줌 (이벤트 발생한 곳)
+				// e.currentTarget은 지금 이벤트리스너가 달린 곳 알려줌 (참고로 this라고 써도 똑같음)
+				// e.preventDefault() 실행하면 이벤트 기본 동작을 막아줌
+				// e.stopPropagation() 실행하면 내 상위요소로의 이벤트 버블링을 중 단해줌
+
+				// 배운 내용
+				// 1. 이벤트 버블링은 항상 일어난다
+				// 2. 이벤트 관련 유용한 함수들을 사용가능하다
+				if (e.target == document.querySelector(".black-bg")) {
+					document.querySelector(".black-bg").classList.remove("show-modal");
+				}
+			});
 		</script>
 	</body>
 </html>
