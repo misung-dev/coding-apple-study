@@ -11,6 +11,19 @@ function App() {
 				<div>개발 blog</div>
 			</div>
 
+			{/* 글자 정렬 버튼 */}
+			<button
+				onClick={() => {
+					let copy = [...글제목];
+					copy.sort();
+					글제목변경(copy);
+				}}
+			>
+				{" "}
+				정렬버튼{" "}
+			</button>
+
+			{/* 글제목 일부 변경 */}
 			<button
 				onClick={() => {
 					// let copy = 글제목; // 글제목에 있던 화살표가 복사됨
