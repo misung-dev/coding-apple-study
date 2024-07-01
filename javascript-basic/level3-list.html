@@ -25,6 +25,9 @@
 
 		<div class="container">
 			<button class="btn btn-danger" id="more">더보기</button>
+			<button class="btn btn-danger" id="price">가격순 정렬</button>
+			<button class="btn btn-danger" id="sort1">다가나순 정렬</button>
+			<button class="btn btn-danger" id="under-price">6만원 이하</button>
 		</div>
 
 		<script>
@@ -34,16 +37,78 @@
 				{ id: 2, price: 60000, title: "Black Monastery" },
 			];
 
+			// 기본 항목 노출
 			products.forEach((data, i) => {
 				let 템플릿 = `<div class="col-sm-4">
 					<img src="https://via.placeholder.com/600" class="w-100" />
 					<h5>${data.title}</h5>
 					<p>가격 : ${data.price}</p>
 					</div>`;
-
 				$(".row").append(템플릿);
 			});
 
+			// 가격순 정렬
+			$("#price").click(function () {
+				products.sort(function (a, b) {
+					return a.price - b.price;
+				});
+
+				$(".row").html("");
+
+				products.forEach((data, i) => {
+					let 템플릿 = `<div class="col-sm-4">
+					<img src="https://via.placeholder.com/600" class="w-100" />
+					<h5>${data.title}</h5>
+					<p>가격 : ${data.price}</p>
+					</div>`;
+
+					$(".row").append(템플릿);
+				});
+			});
+
+			// 상품명 다나가순 정렬
+			$("#sort1").click(function () {
+				products.sort(function (a, b) {
+					if (a.title < b.title) {
+						return 1;
+					} else {
+						return -1;
+					}
+				});
+
+				$(".row").html("");
+
+				products.forEach((data, i) => {
+					let 템플릿 = `<div class="col-sm-4">
+					<img src="https://via.placeholder.com/600" class="w-100" />
+					<h5>${data.title}</h5>
+					<p>가격 : ${data.price}</p>
+					</div>`;
+
+					$(".row").append(템플릿);
+				});
+			});
+
+			// 6만원 이하 상품만 보기
+			$("#under-price").click(function () {
+				let newProduct = products.filter(function (a) {
+					return a.price <= 60000;
+				});
+
+				$(".row").html("");
+
+				newProduct.forEach((data, i) => {
+					let 템플릿 = `<div class="col-sm-4">
+					<img src="https://via.placeholder.com/600" class="w-100" />
+					<h5>${newProduct[i].title}</h5>
+					<p>가격 : ${newProduct[i].price}</p>
+					</div>`;
+
+					$(".row").append(템플릿);
+				});
+			});
+
+			// 더보기 버튼 구현
 			$("#more").click(function () {
 				$.get("https://codingapple1.github.io/js/more2.json").done((data) => {
 					console.log(data);
