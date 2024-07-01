@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="level-scroll-animation.css" />
+		<script
+			src="https://code.jquery.com/jquery-3.7.1.min.js"
+			integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<div class="card-background">
+			<div class="card-box"><img src="img/card1.png" alt="이미지1" /></div>
+			<div class="card-box"><img src="img/card2.png" alt="이미지2" /></div>
+			<div class="card-box"><img src="img/card3.png" alt="이미지3" /></div>
+		</div>
+
+		<script>
+			$(window).scroll(function () {
+				// 콘솔창에 현재 스크롤바 높이를 출력하면서 측정해보았습니다.
+				// 650px 쯤 스크롤하면 opacity를 1로,
+				// 900px 쯤 스크롤하면 opacity를 대충 0.5로,
+				// 1150px 쯤 스크롤하면 opacity를 0으로 설정하면 좋을 것 같습니다.
+				let 높이 = $(window).scrollTop();
+
+				// 높이가 650일 때 y가 1,
+				// 높이가 1150일 때 y가 0입니다.
+				// 1 = a * 650 + b
+				// 0 = a * 1150 + b
+				// a = -1/500
+				// b = 115/50
+				let y = (-1 / 500) * 높이 + 115 / 50;
+				$(".card-box").eq(0).css("opacity", y);
+
+				// z = a * 높이 + b 이렇게 수식을 세운 뒤
+				// 높이가 650일 때 z는 1,
+				// 높이가 1150일 때 z는 0.9
+				let z = (-1 / 5000) * 높이 + 565 / 500;
+				$(".card-box").eq(0).css("transform", `scale( ${z} )`);
+			});
+		</script>
+	</body>
+</html>
