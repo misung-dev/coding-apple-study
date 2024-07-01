@@ -12,6 +12,16 @@ function App() {
 				<div>개발 blog</div>
 			</div>
 
+			{/* map을 활용한 축약형 */}
+			{글제목.map(function (a) {
+				return (
+					<div className="list">
+						<h4>{a}</h4>
+						<p>2월 18일 발행</p>
+					</div>
+				);
+			})}
+
 			{/* 글자 정렬 버튼 */}
 			<button
 				onClick={() => {
