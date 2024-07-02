@@ -9,7 +9,7 @@ import Detail from "./Detail";
 import axios from "axios";
 
 function App() {
-	let [shoes] = useState(data);
+	let [shoes, setShoes] = useState(data);
 	let navigate = useNavigate();
 
 	return (
@@ -64,17 +64,16 @@ function App() {
 							</div>
 							<button
 								onClick={() => {
-									axios
-										.get("https://codingapple1.github.io/shop/data2.json")
-										.then((결과) => {
-											console.log(결과.data);
-										})
-										.catch(() => {
-											console.log("실패함");
-										});
+									axios.get("https://codingapple1.github.io/shop/data2.json").then((결과) => {
+										console.log(결과.data);
+										console.log(shoes);
+
+										let copy = [...shoes, ...결과.data];
+										setShoes(copy);
+									});
 								}}
 							>
-								버튼
+								더보기
 							</button>
 						</>
 					}
