@@ -38,6 +38,13 @@ function App() {
 						>
 							About
 						</Nav.Link>
+						<Nav.Link
+							onClick={() => {
+								navigate("/event");
+							}}
+						>
+							event
+						</Nav.Link>
 					</Nav>
 				</Container>
 			</Navbar>
@@ -62,8 +69,21 @@ function App() {
 					<Route path="member" element={<div>멤버들</div>} />
 					<Route path="location" element={<div>회사위치</div>} />
 				</Route>
-			</Routes>{" "}
+				<Route path="/event" element={<EventPage />}>
+					<Route path="one" element={<p>첫 주문시 양배추즙 서비스</p>}></Route>
+					<Route path="two" element={<p>생일기념 쿠폰받기</p>}></Route>
+				</Route>
+			</Routes>
 		</>
+	);
+}
+
+function EventPage() {
+	return (
+		<div>
+			<h4>오늘의 이벤트</h4>
+			<Outlet></Outlet>
+		</div>
 	);
 }
 
