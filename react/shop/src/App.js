@@ -5,8 +5,9 @@ import bg from "./bg.png";
 import { useState } from "react";
 import data from "./data";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
-import Detail from "./Detail";
 import axios from "axios";
+import Detail from "./routes/Detail";
+import Cart from "./routes/Cart";
 
 function App() {
 	let [shoes, setShoes] = useState(data);
@@ -83,7 +84,8 @@ function App() {
 				/>
 				{/* 현재url파라미터에 입력된숫자를 넣기 */}
 				<Route path="/detail/:id" element={<Detail shoes={shoes} />} />
-				<Route path="/about" element={<About />}>
+				<Route path="/about" element={<About />} />
+				<Route path="/cart" element={<Cart />}>
 					<Route path="member" element={<div>멤버들</div>} />
 					<Route path="location" element={<div>회사위치</div>} />
 				</Route>
