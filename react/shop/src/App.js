@@ -64,6 +64,7 @@ function App() {
 							</div>
 							<button
 								onClick={() => {
+									// 로딩중 ui 띄우기
 									axios.get("https://codingapple1.github.io/shop/data2.json").then((결과) => {
 										console.log(결과.data);
 										console.log(shoes);
@@ -71,6 +72,8 @@ function App() {
 										let copy = [...shoes, ...결과.data];
 										setShoes(copy);
 									});
+
+									axios.post("/asdfjakslf;");
 								}}
 							>
 								더보기
