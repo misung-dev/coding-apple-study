@@ -50,7 +50,7 @@ function App() {
 				}
 			/>
 			<Route path="/detail" element={<Detail />} />
-			<Route path="/about" element={<div>어바웃페이지</div>} />
+			<Route path="*" element={<div>없는 페이지요</div>} />
 		</Routes>
 	);
 }
