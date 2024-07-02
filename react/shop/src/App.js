@@ -64,7 +64,8 @@ function App() {
 						</>
 					}
 				/>
-				<Route path="/detail" element={<Detail />} />
+				{/* 현재url파라미터에 입력된숫자를 넣기 */}
+				<Route path="/detail/:id" element={<Detail shoes={shoes} />} />
 				<Route path="/about" element={<About />}>
 					<Route path="member" element={<div>멤버들</div>} />
 					<Route path="location" element={<div>회사위치</div>} />
