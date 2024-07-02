@@ -12,46 +12,67 @@ function App() {
 	let navigate = useNavigate();
 
 	return (
-		<Routes>
-			<Route
-				path="/"
-				element={
-					<>
-						<Navbar bg="dark" variant="dark">
-							<Container>
-								<Navbar.Brand href="#home">Navbar</Navbar.Brand>
-								<Nav className="me-auto">
-									<Nav.Link
-										onClick={() => {
-											navigate("/");
-										}}
-									>
-										Home
-									</Nav.Link>
-									<Nav.Link
-										onClick={() => {
-											navigate("/detail");
-										}}
-									>
-										Detail
-									</Nav.Link>
-								</Nav>
-							</Container>
-						</Navbar>
-						<div className="main-bg" style={{ backgroundImage: "url(" + bg + ")" }}></div>\{" "}
-						<div className="container">
-							<div className="row">
-								{shoes.map((a, i) => {
-									return <Card shoes={shoes[i]} i={i} />;
-								})}
+		<>
+			<Navbar bg="dark" variant="dark">
+				<Container>
+					<Navbar.Brand href="#home">Navbar</Navbar.Brand>
+					<Nav className="me-auto">
+						<Nav.Link
+							onClick={() => {
+								navigate("/");
+							}}
+						>
+							Home
+						</Nav.Link>
+						<Nav.Link
+							onClick={() => {
+								navigate("/detail");
+							}}
+						>
+							Detail
+						</Nav.Link>
+						<Nav.Link
+							onClick={() => {
+								navigate("/about");
+							}}
+						>
+							About
+						</Nav.Link>
+					</Nav>
+				</Container>
+			</Navbar>
+			<Routes>
+				<Route
+					path="/"
+					element={
+						<>
+							<div className="main-bg" style={{ backgroundImage: "url(" + bg + ")" }}></div>\{" "}
+							<div className="container">
+								<div className="row">
+									{shoes.map((a, i) => {
+										return <Card shoes={shoes[i]} i={i} />;
+									})}
+								</div>
 							</div>
-						</div>
-					</>
-				}
-			/>
-			<Route path="/detail" element={<Detail />} />
-			<Route path="*" element={<div>없는 페이지요</div>} />
-		</Routes>
+						</>
+					}
+				/>
+				<Route path="/detail" element={<Detail />} />
+				<Route path="/about" element={<About />}>
+					<Route path="member" element={<div>멤버들</div>} />
+					<Route path="location" element={<div>회사위치</div>} />
+				</Route>
+			</Routes>{" "}
+		</>
+	);
+}
+
+function About() {
+	return (
+		<div>
+			<h4>about페이지임</h4>
+			<Outlet></Outlet>
+		</div>
 	);
 }
 
