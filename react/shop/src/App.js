@@ -4,6 +4,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import bg from "./bg.png";
 import { useState } from "react";
 import data from "./data";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
 	let [shoes] = useState(data);
@@ -11,30 +12,35 @@ function App() {
 
 	return (
 		<div>
-			<Navbar bg="dark" variant="dark">
-				<Container>
-					<Navbar.Brand href="#home">Navbar</Navbar.Brand>
-					<Nav className="me-auto">
-						<Nav.Link href="#home">Home</Nav.Link>
-						<Nav.Link href="#features">Features</Nav.Link>
-						<Nav.Link href="#pricing">Pricing</Nav.Link>
-					</Nav>
-				</Container>
-			</Navbar>
-			<div className="main-bg" style={{ backgroundImage: "url(" + bg + ")" }}></div>\{" "}
-			<div className="container">
-				<div className="row">
-					{/* 긴 버전 */}
-					{/* <Card shoes={shoes[0]} i={1} />
-					<Card shoes={shoes[1]} i={2} />
-					<Card shoes={shoes[2]} i={3} /> */}
-
-					{/* 축약형 */}
-					{shoes.map((a, i) => {
-						return <Card shoes={shoes[i]} i={i} />;
-					})}
-				</div>
-			</div>
+			<Routes>
+				<Route
+					path="/"
+					element={
+						<>
+							<Navbar bg="dark" variant="dark">
+								<Container>
+									<Navbar.Brand href="#home">Navbar</Navbar.Brand>
+									<Nav className="me-auto">
+										<Nav.Link href="#home">Home</Nav.Link>
+										<Nav.Link href="#features">Features</Nav.Link>
+										<Nav.Link href="#pricing">Pricing</Nav.Link>
+									</Nav>
+								</Container>
+							</Navbar>
+							<div className="main-bg" style={{ backgroundImage: "url(" + bg + ")" }}></div>\{" "}
+							<div className="container">
+								<div className="row">
+									{shoes.map((a, i) => {
+										return <Card shoes={shoes[i]} i={i} />;
+									})}
+								</div>
+							</div>
+						</>
+					}
+				/>
+				<Route path="/detail" element={<div>상세페이지</div>} />
+				<Route path="/about" element={<div>어바웃페이지</div>} />
+			</Routes>
 		</div>
 	);
 }
