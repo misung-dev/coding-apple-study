@@ -4,44 +4,54 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import bg from "./bg.png";
 import { useState } from "react";
 import data from "./data";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import Detail from "./Detail";
 
 function App() {
 	let [shoes] = useState(data);
-	console.log(shoes);
+	let navigate = useNavigate();
 
 	return (
-		<div>
-			<Routes>
-				<Route
-					path="/"
-					element={
-						<>
-							<Navbar bg="dark" variant="dark">
-								<Container>
-									<Navbar.Brand href="#home">Navbar</Navbar.Brand>
-									<Nav className="me-auto">
-										<Nav.Link href="#home">Home</Nav.Link>
-										<Nav.Link href="#features">Features</Nav.Link>
-										<Nav.Link href="#pricing">Pricing</Nav.Link>
-									</Nav>
-								</Container>
-							</Navbar>
-							<div className="main-bg" style={{ backgroundImage: "url(" + bg + ")" }}></div>\{" "}
-							<div className="container">
-								<div className="row">
-									{shoes.map((a, i) => {
-										return <Card shoes={shoes[i]} i={i} />;
-									})}
-								</div>
+		<Routes>
+			<Route
+				path="/"
+				element={
+					<>
+						<Navbar bg="dark" variant="dark">
+							<Container>
+								<Navbar.Brand href="#home">Navbar</Navbar.Brand>
+								<Nav className="me-auto">
+									<Nav.Link
+										onClick={() => {
+											navigate("/");
+										}}
+									>
+										Home
+									</Nav.Link>
+									<Nav.Link
+										onClick={() => {
+											navigate("/detail");
+										}}
+									>
+										Detail
+									</Nav.Link>
+								</Nav>
+							</Container>
+						</Navbar>
+						<div className="main-bg" style={{ backgroundImage: "url(" + bg + ")" }}></div>\{" "}
+						<div className="container">
+							<div className="row">
+								{shoes.map((a, i) => {
+									return <Card shoes={shoes[i]} i={i} />;
+								})}
 							</div>
-						</>
-					}
-				/>
-				<Route path="/detail" element={<div>상세페이지</div>} />
-				<Route path="/about" element={<div>어바웃페이지</div>} />
-			</Routes>
-		</div>
+						</div>
+					</>
+				}
+			/>
+			<Route path="/detail" element={<Detail />} />
+			<Route path="/about" element={<div>어바웃페이지</div>} />
+		</Routes>
 	);
 }
 
